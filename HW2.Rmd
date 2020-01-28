@@ -9,11 +9,13 @@ output: word_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
+```{r, message=FALSE, error=FALSE}
 library(tidyverse) #loading the tidyverse package
 
 
 ```
+
+
 
 
 1.
@@ -41,9 +43,7 @@ Based on the graph there are two equilibria for this population. There is an uns
 
 3.
 
-
 4.
-
 
 5a.
 ```{r}
