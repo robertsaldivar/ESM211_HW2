@@ -1,0 +1,103 @@
+---
+title: "HW2"
+author: "Robert Saldivar"
+date: "January 27, 2020"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse) #loading the tidyverse package
+
+
+```
+
+
+1.
+```{r}
+# plotting the function
+
+#loading the variables of the function
+r <- 0.05
+K <- 2000
+P <- 4
+a <- 0.01
+h <- 0.2
+f <- function(N) r * N * (1 - N/K) # Here is defined the function
+
+fun <- ggplot(data.frame(N = 0:2100), aes(x = N)) +
+  stat_function(fun = f, color ="red") +
+  geom_hline(yintercept = 0) +
+  ylab("dN/dt")
+
+fun
+```
+
+2. 
+Based on the graph there are two equilibria for this population. There is an unstable equilibria when the population equals 0 and a stable equilibria when the population equals 2000.
+
+3.
+
+
+4.
+
+
+5a.
+```{r}
+
+fp <- function(N) P * ((a * N)/(1 + a * h * N)) #This defines the hunting rate
+
+fun_p <- ggplot(data.frame(N = 0:2100), aes(x = N)) +
+  stat_function(fun = f, color ="red") +
+  stat_function(fun = fp, color = "blue") +
+  geom_hline(yintercept = 0) +
+  ylab("dN/dt")
+
+fun_p
+
+```
+
+5b.
+
+5c.
+
+6.
+```{r}
+P <-1 #This will set the P value to 1 for the following function
+
+fun_p1 <- ggplot(data.frame(N = 0:2100), aes(x = N)) +
+  stat_function(fun = f, color ="red") +
+  stat_function(fun = fp, color = "blue") +
+  geom_hline(yintercept = 0) +
+  ylab("dN/dt") +
+  ggtitle("Population dynamics when P = 1")
+
+fun_p1
+
+P <- 6 #This will set the P value to 6 for the following function
+
+fun_p6 <- ggplot(data.frame(N = 0:2100), aes(x = N)) +
+  stat_function(fun = f, color ="red") +
+  stat_function(fun = fp, color = "blue") +
+  geom_hline(yintercept = 0) +
+  ylab("dN/dt") +
+  ggtitle("Population dynamics when P = 6")
+
+fun_p6
+
+```
+
+7a.
+
+7b.
+
+7c.
+
+8a.
+
+8b.
+
+8c.
