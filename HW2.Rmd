@@ -26,12 +26,14 @@ library(tidyverse) #loading the tidyverse package
 r <- 0.05
 K <- 2000
 P <- 4
-a <- 0.01
+a <- 0.05
 h <- 0.2
-f <- function(N) r * N * (1 - N/K) # Here is defined the function
+full <- function(N) r * N * (1 - N/K) - (P * (a * N)/(1 + a * h * N)) # Here is defined the function
+f <- function(N) r * N * (1 - N/K) #this is the first part of the function defined
 
-fun <- ggplot(data.frame(N = 0:2100), aes(x = N)) +
-  stat_function(fun = f, color ="red") +
+
+fun <- ggplot(data.frame(N = 0:1600), aes(x = N)) +
+  stat_function(fun = full, color ="red") +
   geom_hline(yintercept = 0) +
   ylab("dN/dt")
 
@@ -39,11 +41,16 @@ fun
 ```
 
 2. 
-Based on the graph there are two equilibria for this population. There is an unstable equilibria when the population equals 0 and a stable equilibria when the population equals 2000.
+Based on the graph there are three equilibria for this population. There are stable equilibria at population sizes of 0 and 1500. There is an unstable equilibria at a population size of 375.
+
 
 3.
 
+
+
 4.
+
+
 
 5a.
 ```{r}
@@ -61,8 +68,10 @@ fun_p
 ```
 
 5b.
+When the hunting rate is greater than the intrinsic growth rate then the population will decline. When the hunting rate is less than the intrinsic growth rate then the population will increase. When hunting rate is equal to the intrinsic growth rate then the population will be in a state of equilibrium.
 
 5c.
+Where the graphs intersect on this graph is where the graph in problem crosses 0 on the x-axis. This means where the above graphs intersect are locations where the population is at equilibrium.
 
 6.
 ```{r}
@@ -89,8 +98,11 @@ fun_p6 <- ggplot(data.frame(N = 0:2100), aes(x = N)) +
 fun_p6
 
 ```
+When the P value is 1 ther are two equilibria, one at 0 and one at ... The 0 equilbria is unstable and the ... equilibria is stable. When the P value is 6 then there is only one equilibria at 0. This is a stable equilibria.
+
 
 7a.
+
 
 7b.
 
