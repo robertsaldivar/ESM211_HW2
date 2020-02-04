@@ -42,7 +42,7 @@ Based on the graph there are three equilibria for this population. There are sta
 
 
 3.
-The zero equalibrium is locally stable when P = ((1 + ahN)((1 + ahN) * (Kr) - (1 + ahN) * (2rN) - (1 + ahN) * (aKN)))/aK
+The zero equilibrium is locally stable when P > r/a, but there is always going to be a zero equilibrium for this model. To eliminate the means to eliminate the species hunters would need to be attacking the species at a greater rate than the species intrinsic growth rate (Pa > r).
 
 
 4.
@@ -120,35 +120,30 @@ d <- 1/(a*h)
 N <- 0
 
 
-fp1 <- function(P) ((1 + ahN)((1 + ahN) * (Kr) - (1 + ahN) * (2 * r * N) - (1 + ahN) * (aKN))) - aPK
+fp1 <- function(P) (P * a)/r
 fp2 <- function(P) (1/2) * ((K - d) - sqrt((K - d)^2 + ((4*K*d)/(r)) * (r - a * P)))
 fp3 <- function(P) (1/2) * ((K - d) + sqrt((K - d)^2 + ((4*K*d)/(r)) * (r - a * P)))
 
 fun_fp1 <- ggplot(data.frame(P = 0:7), aes(x = P)) +
-  stat_function(fun = fp1, color = "red") +
-  ylab("N")
+  stat_function(fun = fp1, color = "red")
 
 fun_fp1
 
-fun_fp2 <- ggplot(data.frame(P = 0:7), aes(x = P)) +
+fun_fp123 <- ggplot(data.frame(P = 0:7), aes(x = P)) +
+  stat_function(fun = fp1, color = "red") +
   stat_function(fun = fp2, color = "blue") +
-  ylab("N") + 
-  geom_vline(xintercept =  3, color = "violet")
-  
-
-fun_fp2
-
-fun_fp3 <- ggplot(data.frame(P = 0:7), aes(x = P)) +
   stat_function(fun = fp3, color = "green") +
-  ylab("N") + 
-  geom_vline(xintercept =   4, color = "violet")
+  ylab("N")  +
+  geom_vline(xintercept = 4, color = "purple", linetype = "dotted", size = 2)
 
-fun_fp3
+fun_fp123
 
 ```
 
 
 8b.
+The value of P when the equilibrium changes from locally stable to unstable is where the populations equilibrium points are.
 
 
 8c.
+This also tells me that the equlibrium formula for the two non zero equilibria are logistic and that the zero equilibria is linear. I am confused as to why the zero equlibrium is a linear graph. It also tells me that 6 hunters will be enough to exterminate the invasive species. 
